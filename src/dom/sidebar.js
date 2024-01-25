@@ -22,9 +22,10 @@ export default function createSideBar() {
   navbar.classList.add("navbar");
   sideBarContainer.appendChild(navbar);
 
-  const inboxLink = createLink("Inbox", navbar, inboxIcon);
-  const todayLink = createLink("Today", navbar, todayIcon);
-  const upcomingLink = createLink("Upcoming", navbar, upcomingIcon);
+  const inboxLink = createLink("Inbox", navbar, "inbox", inboxIcon);
+  inboxLink.classList.add("active");
+  const todayLink = createLink("Today", navbar, "today", todayIcon);
+  const upcomingLink = createLink("Upcoming", navbar, "upcoming", upcomingIcon);
 
   const projectsContainer = document.createElement("ul");
   projectsContainer.classList.add("projects");
@@ -42,9 +43,9 @@ export default function createSideBar() {
   sideBarContainer.appendChild(footerContainer);
 }
 
-function createLink(text, parent, iconSvg) {
+function createLink(text, parent, id, iconSvg) {
   const link = document.createElement("li");
-
+  link.id = id;
   const iconContainer = document.createElement("span");
   const icon = document.createElement("img");
   icon.src = iconSvg;
@@ -58,4 +59,5 @@ function createLink(text, parent, iconSvg) {
   link.appendChild(textContainer);
 
   parent.appendChild(link);
+  return link;
 }

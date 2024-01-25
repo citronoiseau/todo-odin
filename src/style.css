@@ -24,6 +24,10 @@ body {
   display: flex;
   flex-direction: column;
 }
+
+h2 {
+  text-transform: capitalize;
+}
 .display {
   background-color: #f2f6fc;
   border-radius: 15px;
@@ -36,11 +40,16 @@ li {
   align-items: center;
   gap: 8px;
 }
+li.active {
+  color: red;
+}
+
 .dialog {
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+
   opacity: 0;
   transition: opacity 0.5s ease-in-out;
   border: none;

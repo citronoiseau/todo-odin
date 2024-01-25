@@ -26,13 +26,22 @@ export default function createTaskDialog() {
   );
   const taskDescriptionText = document.createElement("textarea");
   taskDescriptionText.id = "description";
-  taskDescriptionContainer.appendChild(taskDescriptionText);
   taskDescriptionText.maxLength = 100;
+  taskDescriptionContainer.appendChild(taskDescriptionText);
 
   const taskDateContainer = createFormElementContainer(taskForm);
   const taskDateLabel = createLabel("Due date:", "dueDate", taskDateContainer);
   const taskDateInput = createInput("date", "dueDate", taskDateContainer);
   taskDateInput.required = true;
+
+  const taskTimeContainer = createFormElementContainer(taskForm);
+  const taskTimeLabel = createLabel(
+    "Time (optional):",
+    "time",
+    taskTimeContainer
+  );
+  const taskTimeInput = createInput("time", "time", taskTimeContainer);
+  taskTimeInput.value = "none";
 
   const priorityContainer = createFormElementContainer(taskForm);
   const priorityLabel = createLabel(
@@ -42,6 +51,7 @@ export default function createTaskDialog() {
   );
   const prioritySelector = document.createElement("select");
   prioritySelector.id = "prioritySelector";
+  prioritySelector.value = "High";
   priorityContainer.appendChild(prioritySelector);
 
   const priorities = ["High", "Medium", "Low"];

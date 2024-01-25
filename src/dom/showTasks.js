@@ -1,18 +1,23 @@
+import updateList from "./updateList";
+import { format } from "date-fns";
+
 export default function changeTasks(name, tasks) {
   const title = document.querySelector("h2");
   title.textContent = name;
-
+  updateList();
   const taskList = document.querySelector(".taskList");
 
   tasks.forEach((task) => {
     const taskContainer = document.createElement("div");
+    taskContainer.classList.add("taskContainer");
     taskList.appendChild(taskContainer);
 
     const checkbox = document.createElement("input");
     checkbox.type = "checkbox";
+    taskContainer.appendChild(checkbox);
 
     const taskName = document.createElement("div");
-    taskName.textContent = task.name;
+    taskName.textContent = task.title;
     taskContainer.appendChild(taskName);
 
     if (task.description !== "none") {
@@ -22,8 +27,16 @@ export default function changeTasks(name, tasks) {
     }
 
     const taskDueDate = document.createElement("div");
-    taskDueDate.textContent = task.dueDate;
+    const dueDate = new Date(task.dueDate);
+    const formattedDate = format(dueDate, "d MMM");
+    taskDueDate.textContent = formattedDate;
     taskContainer.appendChild(taskDueDate);
+
+    if (task.time !== "") {
+      const taskTime = document.createElement("div");
+      taskTime.textContent = task.time;
+      taskContainer.appendChild(taskTime);
+    }
 
     if (task.project !== "none") {
       const taskProject = document.createElement("div");
@@ -36,18 +49,22 @@ export default function changeTasks(name, tasks) {
 
     const editBtn = document.createElement("button");
     editBtn.textContent = "Edit";
+    editBtn.addEventListener("click", () => {
+      task.editTask();
+    });
     const removeBtn = document.createElement("button");
     removeBtn.textContent = "Delete";
+    removeBtn.addEventListener("click", () => task.deleteTask());
     iconContainer.appendChild(editBtn);
     iconContainer.appendChild(removeBtn);
 
     const taskPriority = task.priority;
     if (taskPriority === "High") {
-      taskContainer.style.borderLeftColor = "#42AC7F";
+      taskContainer.style.borderLeft = "5px solid  #F94876";
     } else if (taskPriority === "Medium") {
-      taskContainer.style.borderLeftColor = "#F6C058";
+      taskContainer.style.borderLeft = "5px solid #F6C058";
     } else if (taskPriority === "Low") {
-      taskContainer.style.borderLeftColor = "#F94876";
+      taskContainer.style.borderLeft = "5px solid #42AC7F";
     }
   });
 }

@@ -1,6 +1,6 @@
 import createTask from "./createTask";
-export default function dialogHandler() {
-  const createTaskBtns = document.querySelectorAll(".addTaskBtn");
+import handleActiveLink from "./handleActiveLink";
+export default function dialogHandler(editMode, taskToEdit = null) {
   const taskDialog = document.querySelector(".dialog");
   const form = taskDialog.querySelector("form");
   const confirmBtn = document.querySelector("#confirmBtn");
@@ -9,25 +9,42 @@ export default function dialogHandler() {
   const titleInput = taskDialog.querySelector("#title");
   const descriptionInput = taskDialog.querySelector("#description");
   const dueDateInput = taskDialog.querySelector("#dueDate");
+  const timeInput = taskDialog.querySelector("#time");
   const prioritySelector = taskDialog.querySelector("#prioritySelector");
   const projectSelector = taskDialog.querySelector("#projectSelector");
 
-  createTaskBtns.forEach((createTaskBtn) => {
-    createTaskBtn.addEventListener("click", () => {
-      taskDialog.showModal();
-      taskDialog.classList.add("active");
-    });
-  });
+  taskDialog.showModal();
+  taskDialog.classList.add("active");
 
+  if (editMode && taskToEdit) {
+    titleInput.value = taskToEdit.title;
+    descriptionInput.value = taskToEdit.description;
+    dueDateInput.value = taskToEdit.dueDate;
+    timeInput.value = taskToEdit.time;
+    prioritySelector.value = taskToEdit.priority;
+    projectSelector.value = taskToEdit.project;
+  }
   confirmBtn.addEventListener("click", (event) => {
     if (form.checkValidity()) {
       const title = titleInput.value;
       const description = descriptionInput.value;
       const dueDate = dueDateInput.value;
+      const time = timeInput.value;
       const priority = prioritySelector.value;
       const project = projectSelector.value;
 
-      createTask(title, description, dueDate, priority, project);
+      if (editMode && taskToEdit) {
+        taskToEdit.title = title;
+        taskToEdit.description = description;
+        taskToEdit.dueDate = dueDate;
+        taskToEdit.time = time;
+        taskToEdit.priority = priority;
+        taskToEdit.project = project;
+        handleActiveLink();
+      } else {
+        createTask(title, description, dueDate, time, priority, project);
+      }
+
       event.preventDefault();
       taskDialog.close();
       form.reset();
@@ -35,6 +52,7 @@ export default function dialogHandler() {
   });
   cancelBtn.addEventListener("click", (event) => {
     event.preventDefault();
+    form.reset();
     taskDialog.close();
     taskDialog.classList.remove("active");
   });
