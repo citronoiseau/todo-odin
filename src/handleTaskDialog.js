@@ -1,6 +1,14 @@
 import createTask from "./createTask";
 import handleActiveLink from "./handleActiveLink";
-export default function dialogHandler(editMode, taskToEdit = null) {
+let editMode = false;
+let taskToEdit = null;
+
+export default function dialogHandler(
+  newEditMode = false,
+  newTaskToEdit = null
+) {
+  editMode = newEditMode;
+  taskToEdit = newTaskToEdit;
   const taskDialog = document.querySelector(".dialog");
   const form = taskDialog.querySelector("form");
   const confirmBtn = document.querySelector("#confirmBtn");

@@ -1,6 +1,6 @@
 import "./style.css";
 import pageLoader from "./pageLoader";
-import dialogHandler from "./dialogHandler";
+import dialogHandler from "./handleTaskDialog";
 import handleActiveLink from "./handleActiveLink";
 
 pageLoader();
@@ -22,6 +22,6 @@ const createTaskBtns = document.querySelectorAll(".addTaskBtn");
 
 createTaskBtns.forEach((createTaskBtn) => {
   createTaskBtn.addEventListener("click", () => {
-    dialogHandler();
+    dialogHandler(false, null);
   });
 });

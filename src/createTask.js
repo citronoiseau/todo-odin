@@ -1,5 +1,5 @@
 import handleActiveLink from "./handleActiveLink";
-import dialogHandler from "./dialogHandler";
+import dialogHandler from "./handleTaskDialog";
 export const tasks = [];
 
 class Task {
