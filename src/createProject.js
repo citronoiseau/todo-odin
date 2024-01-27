@@ -26,7 +26,7 @@ class Project {
       updateOptions();
     }
   }
-  getDescription(title) {
+  getDescription() {
     return this.description;
   }
 }

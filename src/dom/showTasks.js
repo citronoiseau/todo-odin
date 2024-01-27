@@ -4,11 +4,12 @@ import { projects, Project } from "../createProject";
 
 export default function changeTasks(name, tasks) {
   const title = document.querySelector("h2");
+  const description = document.querySelector(".projectMainDescription");
   title.textContent = name;
+  description.textContent = "";
   const matchingProject = projects.find((project) => project.title === name);
 
   if (matchingProject) {
-    const description = document.querySelector(".projectMainDescription");
     description.textContent = matchingProject.getDescription();
   }
   updateList();
