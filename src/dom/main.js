@@ -13,6 +13,10 @@ export default function createMain() {
   title.textContent = "Inbox";
   display.appendChild(title);
 
+  const description = document.createElement("div");
+  description.classList.add("projectMainDescription");
+  display.appendChild(description);
+
   const taskList = document.createElement("div");
   taskList.classList.add("taskList");
   display.appendChild(taskList);

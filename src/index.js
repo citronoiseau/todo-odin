@@ -1,6 +1,7 @@
 import "./style.css";
 import pageLoader from "./pageLoader";
-import dialogHandler from "./handleTaskDialog";
+import taskDialogHandler from "./handleTaskDialog";
+import projectDialogHandler from "./handleProjectDialog";
 import handleActiveLink from "./handleActiveLink";
 
 pageLoader();
@@ -10,18 +11,46 @@ const today = document.querySelector("#today");
 const upcoming = document.querySelector("#upcoming");
 const createTaskBtns = document.querySelectorAll(".addTaskBtn");
 
-[inbox, today, upcoming].forEach((link) => {
-  link.addEventListener("click", () => {
-    [inbox, today, upcoming].forEach((link) => {
-      link.classList.remove("active");
-    });
-    link.classList.add("active");
-    handleActiveLink();
-  });
-});
+const createProjectBtn = document.querySelector(".addProjectBtn");
+const projectList = document.querySelector(".projectList");
+const projectLinks = document.querySelectorAll(".projectLink");
+let allLinks = [inbox, today, upcoming, ...projectLinks];
 
 createTaskBtns.forEach((createTaskBtn) => {
   createTaskBtn.addEventListener("click", () => {
-    dialogHandler(false, null);
+    taskDialogHandler(false, null);
   });
+});
+
+createProjectBtn.addEventListener("click", () => {
+  projectDialogHandler();
+});
+
+export function updateAllLinks() {
+  allLinks = [
+    inbox,
+    today,
+    upcoming,
+    ...projectList.querySelectorAll(".projectLink"),
+  ];
+
+  allLinks.forEach((link) => {
+    link.removeEventListener("click", handleLinkClick);
+  });
+
+  allLinks.forEach((link) => {
+    link.addEventListener("click", handleLinkClick);
+  });
+}
+
+function handleLinkClick() {
+  allLinks.forEach((link) => {
+    link.classList.remove("active");
+  });
+  this.classList.add("active");
+  handleActiveLink();
+}
+
+allLinks.forEach((link) => {
+  link.addEventListener("click", handleLinkClick);
 });

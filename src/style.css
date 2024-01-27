@@ -40,7 +40,8 @@ li {
   align-items: center;
   gap: 8px;
 }
-li.active {
+li.active,
+span.active {
   color: red;
 }
 
@@ -49,7 +50,6 @@ li.active {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-
   opacity: 0;
   transition: opacity 0.5s ease-in-out;
   border: none;
@@ -58,6 +58,13 @@ li.active {
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
     rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
 }
+.noResize {
+  resize: none;
+  overflow-y: auto;
+}
 .dialog.active {
   opacity: 1;
+}
+.addTaskBtn {
+  margin-top: 30px;
 }

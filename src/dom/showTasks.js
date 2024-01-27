@@ -1,9 +1,16 @@
 import updateList from "./updateList";
 import { format } from "date-fns";
+import { projects, Project } from "../createProject";
 
 export default function changeTasks(name, tasks) {
   const title = document.querySelector("h2");
   title.textContent = name;
+  const matchingProject = projects.find((project) => project.title === name);
+
+  if (matchingProject) {
+    const description = document.querySelector(".projectMainDescription");
+    description.textContent = matchingProject.getDescription();
+  }
   updateList();
   const taskList = document.querySelector(".taskList");
 

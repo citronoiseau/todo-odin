@@ -1,9 +1,15 @@
 import { tasks } from "./createTask";
+import { projects } from "./createProject";
 import { format, isToday, addDays, isAfter, isBefore } from "date-fns";
 import showTasks from "./dom/showTasks";
-
+let isProject = false;
 export default function handleTaskDisplay(name) {
+  if (projects.some((project) => project.title === name)) {
+    isProject = true;
+  }
+
   if (name === "inbox") {
+    console.log(name);
     showTasks(name, tasks);
   }
   if (name === "today") {
@@ -27,4 +33,9 @@ export default function handleTaskDisplay(name) {
 
     showTasks(name, upcomingTasks);
   }
+  if (isProject) {
+    const projectTasks = tasks.filter((task) => task.project === name);
+    showTasks(name, projectTasks);
+  }
+  isProject = false;
 }

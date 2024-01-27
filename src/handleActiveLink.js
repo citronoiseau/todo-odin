@@ -5,9 +5,9 @@ export default function handleActiveLink() {
   const today = document.querySelector("#today");
   const upcoming = document.querySelector("#upcoming");
 
-  const activeLink = [inbox, today, upcoming].find((link) =>
-    link.classList.contains("active")
-  );
+  const projectLinks = document.querySelectorAll(".projectLink");
+  const allLinks = [inbox, today, upcoming, ...projectLinks];
+  const activeLink = allLinks.find((link) => link.classList.contains("active"));
 
   const passLink = activeLink.id;
   handleTaskDisplay(passLink);

@@ -27,9 +27,22 @@ export default function createSideBar() {
   const todayLink = createLink("Today", navbar, "today", todayIcon);
   const upcomingLink = createLink("Upcoming", navbar, "upcoming", upcomingIcon);
 
-  const projectsContainer = document.createElement("ul");
+  const projectsContainer = document.createElement("div");
   projectsContainer.classList.add("projects");
   sideBarContainer.appendChild(projectsContainer);
+
+  const projectTitle = document.createElement("h3");
+  projectTitle.textContent = "Projects:";
+  projectsContainer.appendChild(projectTitle);
+
+  const projectList = document.createElement("ul");
+  projectList.classList.add("projectList");
+  projectsContainer.appendChild(projectList);
+
+  const addProjectBtn = document.createElement("button");
+  addProjectBtn.textContent = "Add project";
+  addProjectBtn.classList.add("addProjectBtn");
+  projectsContainer.appendChild(addProjectBtn);
 
   const footerContainer = document.createElement("div");
   const message = document.createElement("div");

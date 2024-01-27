@@ -1,7 +1,10 @@
+import { projects } from "../createProject";
+
 export default function createTaskDialog() {
   const main = document.querySelector("#main");
 
   const dialog = document.createElement("dialog");
+  dialog.classList.add("taskDialog");
   dialog.classList.add("dialog");
   main.appendChild(dialog);
 
@@ -26,6 +29,7 @@ export default function createTaskDialog() {
   );
   const taskDescriptionText = document.createElement("textarea");
   taskDescriptionText.id = "description";
+  taskDescriptionText.classList.add("noResize");
   taskDescriptionText.maxLength = 100;
   taskDescriptionContainer.appendChild(taskDescriptionText);
 
@@ -71,22 +75,7 @@ export default function createTaskDialog() {
   const projectSelector = document.createElement("select");
   projectSelector.id = "projectSelector";
   projectContainer.appendChild(projectSelector);
-  const projects = [];
-  if (projects.length === 0) {
-    const noProjects = document.createElement("option");
-    noProjects.textContent = "You have no projects!";
-    noProjects.value = "none";
-    projectSelector.appendChild(noProjects);
-  } else {
-    projects.forEach((project) => {
-      if (projects.length === 0) {
-        const noProjects = document.createElement("option");
-        noProjects.textContent = "You have no projects!";
-        noProjects.value = "none";
-        projectSelector.appendChild(noProjects);
-      }
-    });
-  }
+  updateOptions();
 
   const buttonContainer = document.createElement("div");
   taskForm.appendChild(buttonContainer);
@@ -121,4 +110,26 @@ function createFormElementContainer(parent) {
   formElementContainer.classList.add("form-element");
   parent.appendChild(formElementContainer);
   return formElementContainer;
+}
+
+export function updateOptions() {
+  const projectSelector = document.querySelector("#projectSelector");
+  projectSelector.innerHTML = "";
+  if (projects.length === 0) {
+    const noProjects = document.createElement("option");
+    noProjects.textContent = "You have no projects!";
+    noProjects.value = "none";
+    projectSelector.appendChild(noProjects);
+  } else {
+    const noProjects = document.createElement("option");
+    noProjects.textContent = "No project";
+    noProjects.value = "none";
+    projectSelector.appendChild(noProjects);
+    projects.forEach((project) => {
+      const projectOption = document.createElement("option");
+      projectOption.textContent = project.title;
+      projectOption.value = project.title;
+      projectSelector.appendChild(projectOption);
+    });
+  }
 }

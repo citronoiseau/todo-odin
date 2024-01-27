@@ -3,13 +3,13 @@ import handleActiveLink from "./handleActiveLink";
 let editMode = false;
 let taskToEdit = null;
 
-export default function dialogHandler(
+export default function taskDialogHandler(
   newEditMode = false,
   newTaskToEdit = null
 ) {
   editMode = newEditMode;
   taskToEdit = newTaskToEdit;
-  const taskDialog = document.querySelector(".dialog");
+  const taskDialog = document.querySelector(".taskDialog");
   const form = taskDialog.querySelector("form");
   const confirmBtn = document.querySelector("#confirmBtn");
   const cancelBtn = document.querySelector("#cancelBtn");
