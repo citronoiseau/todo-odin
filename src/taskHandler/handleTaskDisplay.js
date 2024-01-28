@@ -1,7 +1,7 @@
 import { tasks } from "./createTask";
-import { projects } from "./createProject";
+import { projects } from "../projectHandler/createProject";
 import { format, isToday, addDays, isAfter, isBefore } from "date-fns";
-import showTasks from "./dom/showTasks";
+import showTasks from "../dom/showTasks";
 let isProject = false;
 export default function handleTaskDisplay(name) {
   if (projects.some((project) => project.title === name)) {

@@ -1,4 +1,4 @@
-import handleActiveLink from "./handleActiveLink";
+import handleActiveLink from "../handleActiveLink";
 import dialogHandler from "./handleTaskDialog";
 export const tasks = [];
 

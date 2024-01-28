@@ -1,5 +1,5 @@
-import handleTaskDisplay from "./handleTaskDisplay";
-
+import handleTaskDisplay from "./taskHandler/handleTaskDisplay";
+let savedLink = null;
 export default function handleActiveLink() {
   const inbox = document.querySelector("#inbox");
   const today = document.querySelector("#today");
@@ -10,9 +10,12 @@ export default function handleActiveLink() {
   const activeLink = allLinks.find((link) => link.classList.contains("active"));
 
   if (!activeLink) {
-    return "none";
+    handleTaskDisplay(savedLink);
+    const savedLinkActive = document.querySelector(`#${savedLink}`);
+    savedLinkActive.classList.add("active");
   } else {
     const passLink = activeLink.id;
     handleTaskDisplay(passLink);
+    savedLink = passLink;
   }
 }

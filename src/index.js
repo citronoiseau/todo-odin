@@ -1,7 +1,7 @@
 import "./style.css";
 import pageLoader from "./pageLoader";
-import taskDialogHandler from "./handleTaskDialog";
-import projectDialogHandler from "./handleProjectDialog";
+import taskDialogHandler from "./taskHandler/handleTaskDialog";
+import projectDialogHandler from "./projectHandler/handleProjectDialog";
 import handleActiveLink from "./handleActiveLink";
 
 pageLoader();

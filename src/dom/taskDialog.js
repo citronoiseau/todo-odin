@@ -1,4 +1,4 @@
-import { projects } from "../createProject";
+import { projects } from "../projectHandler/createProject";
 
 export default function createTaskDialog() {
   const main = document.querySelector("#main");

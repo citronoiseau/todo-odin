@@ -1,5 +1,5 @@
 import updateProjects from "./updateProjects";
-import { projects } from "../createProject";
+import { projects } from "../projectHandler/createProject";
 
 export default function showProject() {
   const projectList = document.querySelector(".projectList");

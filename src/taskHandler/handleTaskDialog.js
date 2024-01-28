@@ -1,5 +1,5 @@
 import createTask from "./createTask";
-import handleActiveLink from "./handleActiveLink";
+import handleActiveLink from "../handleActiveLink";
 let editMode = false;
 let taskToEdit = null;
 

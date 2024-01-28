@@ -1,8 +1,8 @@
-import showProject from "./dom/showProjects";
+import showProject from "../dom/showProjects";
 import projectDialogHandler from "./handleProjectDialog";
-import { updateOptions } from "./dom/taskDialog";
-
-import { updateAllLinks } from ".";
+import { updateOptions } from "../dom/taskDialog";
+import handleActiveLink from "../handleActiveLink";
+import { updateAllLinks } from "..";
 
 export const projects = [];
 
@@ -36,6 +36,7 @@ export default function createProject(title, description) {
   showProject();
   updateAllLinks();
   updateOptions();
+  handleActiveLink();
 }
 
 const defaultProject = new Project(

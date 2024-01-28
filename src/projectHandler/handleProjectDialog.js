@@ -1,8 +1,8 @@
 import createProject from "./createProject";
-import showProject from "./dom/showProjects";
-import { updateOptions } from "./dom/taskDialog";
-import { updateAllLinks } from ".";
-import handleActiveLink from "./handleActiveLink";
+import showProject from "../dom/showProjects";
+import { updateOptions } from "../dom/taskDialog";
+import { updateAllLinks } from "..";
+import handleActiveLink from "../handleActiveLink";
 
 let editMode = false;
 let projectToEdit = null;
@@ -38,12 +38,6 @@ export default function projectDialogHandler(
         projectToEdit.title = title;
         projectToEdit.description = description;
         showProject();
-
-        const noLinkResult = handleActiveLink();
-        if (noLinkResult === "none") {
-          const newProject = document.querySelector(`#${projectToEdit.title}`);
-          newProject.classList.add("active");
-        }
         updateAllLinks();
         updateOptions();
         handleActiveLink();
