@@ -9,6 +9,10 @@ export default function handleActiveLink() {
   const allLinks = [inbox, today, upcoming, ...projectLinks];
   const activeLink = allLinks.find((link) => link.classList.contains("active"));
 
-  const passLink = activeLink.id;
-  handleTaskDisplay(passLink);
+  if (!activeLink) {
+    return "none";
+  } else {
+    const passLink = activeLink.id;
+    handleTaskDisplay(passLink);
+  }
 }

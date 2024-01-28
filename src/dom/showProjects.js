@@ -7,7 +7,6 @@ export default function showProject() {
 
   projects.forEach((project) => {
     const projectContainer = document.createElement("li");
-    projectContainer.id = project.title;
     projectList.appendChild(projectContainer);
 
     const textContainer = document.createElement("span");
