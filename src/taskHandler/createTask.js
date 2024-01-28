@@ -1,6 +1,5 @@
 import handleActiveLink from "../handleActiveLink";
 import dialogHandler from "./handleTaskDialog";
-export const tasks = [];
 
 class Task {
   constructor(title, description, dueDate, time, priority, project) {
@@ -12,9 +11,22 @@ class Task {
     this.project = project;
   }
 
+  static fromObject(obj) {
+    return new Task(
+      obj.title,
+      obj.description,
+      obj.dueDate,
+      obj.time,
+      obj.priority,
+      obj.project
+    );
+  }
+
   editTask() {
     dialogHandler(true, this);
+    saveTasksToLocalStorage();
   }
+
   deleteTask() {
     const confirmed = window.confirm(
       "Are you sure you want to remove this book?"
@@ -23,9 +35,15 @@ class Task {
       const position = tasks.indexOf(this);
       tasks.splice(position, 1);
       handleActiveLink();
+      saveTasksToLocalStorage();
     }
   }
 }
+
+const storedTasks = localStorage.getItem("tasks");
+export const tasks = storedTasks
+  ? JSON.parse(storedTasks).map(Task.fromObject)
+  : [];
 
 export default function createTask(
   title,
@@ -38,14 +56,43 @@ export default function createTask(
   let newTask = new Task(title, description, dueDate, time, priority, project);
   tasks.push(newTask);
   handleActiveLink();
+  saveTasksToLocalStorage();
 }
-const defaultTask = new Task(
-  "Wash the dishes",
-  "5 spoons, 3 pans, 8 mugs",
-  "2024-01-30",
-  "",
-  "Low",
-  "none"
-);
 
-tasks.push(defaultTask);
+function createDefaultTasks() {
+  if (tasks.length === 0) {
+    const defaultTask = new Task(
+      "Wash the dishes",
+      "5 spoons, 3 pans, 8 mugs",
+      "2024-01-30",
+      "",
+      "Low",
+      "Home"
+    );
+
+    const secondDefaultTask = new Task(
+      "Finish the to-do app",
+      "",
+      "2024-02-04",
+      "",
+      "High",
+      "Programming"
+    );
+
+    const thirdDefaultTask = new Task(
+      "Meet Alex",
+      "",
+      "2024-02-05",
+      "14:00",
+      "Medium",
+      "none"
+    );
+    tasks.push(defaultTask, secondDefaultTask, thirdDefaultTask);
+    saveTasksToLocalStorage();
+  }
+}
+createDefaultTasks();
+
+function saveTasksToLocalStorage() {
+  localStorage.setItem("tasks", JSON.stringify(tasks));
+}

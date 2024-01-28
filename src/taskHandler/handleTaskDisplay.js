@@ -9,7 +9,6 @@ export default function handleTaskDisplay(name) {
   }
 
   if (name === "inbox") {
-    console.log(name);
     showTasks(name, tasks);
   }
   if (name === "today") {
