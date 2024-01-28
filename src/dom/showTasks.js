@@ -1,6 +1,6 @@
 import updateList from "./updateList";
 import { format } from "date-fns";
-import { projects, Project } from "../projectHandler/createProject";
+import { projects } from "../projectHandler/createProject";
 
 export default function changeTasks(name, tasks) {
   const title = document.querySelector("h2");
