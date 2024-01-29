@@ -9,20 +9,26 @@ export default function createMain() {
   display.classList.add("display");
   main.appendChild(display);
 
+  const text = document.createElement("div");
+  display.appendChild(text);
+
   const title = document.createElement("h2");
   title.textContent = "Inbox";
-  display.appendChild(title);
+  text.appendChild(title);
 
   const description = document.createElement("div");
   description.classList.add("projectMainDescription");
-  display.appendChild(description);
+  text.appendChild(description);
 
   const taskList = document.createElement("div");
   taskList.classList.add("taskList");
   display.appendChild(taskList);
 
+  const buttonContainer = document.createElement("div");
+  display.appendChild(buttonContainer);
+
   const addTaskBtn = document.createElement("button");
   addTaskBtn.classList.add("addTaskBtn");
   addTaskBtn.textContent = "Add task";
-  display.appendChild(addTaskBtn);
+  buttonContainer.appendChild(addTaskBtn);
 }

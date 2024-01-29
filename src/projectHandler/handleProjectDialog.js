@@ -3,7 +3,7 @@ import showProject from "../dom/showProjects";
 import { updateOptions } from "../dom/taskDialog";
 import { updateAllLinks } from "..";
 import handleActiveLink from "../handleActiveLink";
-
+import { saveProjectsToLocalStorage } from "./createProject";
 let editMode = false;
 let projectToEdit = null;
 
@@ -41,6 +41,7 @@ export default function projectDialogHandler(
         updateAllLinks();
         updateOptions();
         handleActiveLink();
+        saveProjectsToLocalStorage();
       } else {
         createProject(title, description);
       }

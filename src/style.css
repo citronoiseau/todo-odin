@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Oswald&family=Roboto:wght@300;400;500&display=swap");
 * {
   margin: 0;
   padding: 0;
@@ -5,10 +6,11 @@
 }
 body {
   background-color: #eaf1fb;
+  font-family: "Roboto", sans-serif;
 }
 #content {
   display: grid;
-  grid-template-columns: minmax(200px, 15%) 1fr;
+  grid-template-columns: minmax(100px, 20%) 1fr;
   grid-template-areas: "sidebar main";
   height: 100vh;
 }
@@ -24,7 +26,11 @@ body {
   display: flex;
   flex-direction: column;
 }
-
+h1,
+h2,
+h3 {
+  font-family: "Oswald", sans-serif;
+}
 h2 {
   text-transform: capitalize;
 }
@@ -34,14 +40,18 @@ h2 {
   margin: 30px 20px;
   padding: 30px;
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
-li {
+li,
+li > div {
   display: flex;
   align-items: center;
   gap: 8px;
 }
 li.active,
-span.active {
+div.active {
   color: red;
 }
 
@@ -65,6 +75,70 @@ span.active {
 .dialog.active {
   opacity: 1;
 }
-.addTaskBtn {
-  margin-top: 30px;
+
+.taskList {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.taskContainer {
+  display: flex;
+  gap: 15px;
+  padding: 10px;
+  align-items: center;
+  border-radius: 5px;
+  background-color: #f9fbfd;
+}
+.mainInfo {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+.mainInfo p {
+  font-size: 0.89rem;
+  font-weight: 300;
+  color: rgb(67, 67, 67);
+  max-width: 30ch;
+  word-wrap: break-word;
+}
+.mainInfo > div:last-child {
+  font-size: 0.89rem;
+}
+.taskChecked {
+  text-decoration: line-through;
+}
+.textInfo {
+  display: inline;
+}
+.textInfo > div:first-child {
+  font-weight: 500;
+}
+.secondaryInfo {
+  margin-left: auto;
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 10px;
+  align-items: flex-end;
+}
+.secondaryInfo > div {
+  font-size: 0.89rem;
+  color: rgb(92, 92, 92);
+  display: flex;
+  align-items: flex-start;
+}
+
+.projectList > li {
+  justify-content: space-between;
+}
+.projects {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+@media (max-width: 767px) {
+  #sidebar {
+    padding: 10px;
+  }
 }

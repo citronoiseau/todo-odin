@@ -15,7 +15,6 @@ class Project {
   }
   editProject() {
     projectDialogHandler(true, this);
-    saveProjectsToLocalStorage();
   }
   deleteProject() {
     const confirmed = window.confirm(
@@ -64,6 +63,6 @@ function createDefaultProjects() {
   }
 }
 createDefaultProjects();
-function saveProjectsToLocalStorage() {
+export function saveProjectsToLocalStorage() {
   localStorage.setItem("projects", JSON.stringify(projects));
 }

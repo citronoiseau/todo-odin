@@ -12,18 +12,14 @@ export default function createTaskDialog() {
   dialog.appendChild(taskForm);
 
   const taskNameContainer = createFormElementContainer(taskForm);
-  const taskNameLabel = createLabel(
-    "Your task title:",
-    "title",
-    taskNameContainer
-  );
+  const taskNameLabel = createLabel("Title:", "title", taskNameContainer);
   const taskNameInput = createInput("text", "title", taskNameContainer);
   taskNameInput.maxLength = 30;
   taskNameInput.required = true;
 
   const taskDescriptionContainer = createFormElementContainer(taskForm);
   const taskDescriptionLabel = createLabel(
-    "Description (optional):",
+    "Notes (optional):",
     "description",
     taskDescriptionContainer
   );
@@ -49,7 +45,7 @@ export default function createTaskDialog() {
 
   const priorityContainer = createFormElementContainer(taskForm);
   const priorityLabel = createLabel(
-    "Task priority:",
+    "Priority:",
     "prioritySelector",
     priorityContainer
   );
@@ -68,7 +64,7 @@ export default function createTaskDialog() {
 
   const projectContainer = createFormElementContainer(taskForm);
   const projectLabel = createLabel(
-    "Task project:",
+    "Project:",
     "projectSelector",
     projectContainer
   );

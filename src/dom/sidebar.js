@@ -49,7 +49,7 @@ export default function createSideBar() {
   message.textContent = "by ";
   const authorLink = document.createElement("a");
   authorLink.textContent = "lemonbirdy";
-  authorLink.href = "https://github.com/citronoiseau/restaraunt-odin";
+  authorLink.href = "https://github.com/citronoiseau/todo-odin";
   authorLink.target = "_blank";
   footerContainer.appendChild(message);
   message.appendChild(authorLink);

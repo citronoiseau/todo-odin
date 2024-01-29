@@ -24,7 +24,6 @@ class Task {
 
   editTask() {
     dialogHandler(true, this);
-    saveTasksToLocalStorage();
   }
 
   deleteTask() {
@@ -93,6 +92,6 @@ function createDefaultTasks() {
 }
 createDefaultTasks();
 
-function saveTasksToLocalStorage() {
+export function saveTasksToLocalStorage() {
   localStorage.setItem("tasks", JSON.stringify(tasks));
 }

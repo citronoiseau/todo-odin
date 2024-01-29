@@ -11,7 +11,7 @@ export default function createProjectDialog() {
 
   const projectNameContainer = createFormElementContainer(projectForm);
   const taskNameLabel = createLabel(
-    "Your project title:",
+    "Title:",
     "projectTitle",
     projectNameContainer
   );
@@ -25,7 +25,7 @@ export default function createProjectDialog() {
 
   const projectDescriptionContainer = createFormElementContainer(projectForm);
   const projectDescriptionLabel = createLabel(
-    "Description (optional):",
+    "Notes (optional):",
     "projectDescription",
     projectDescriptionContainer
   );

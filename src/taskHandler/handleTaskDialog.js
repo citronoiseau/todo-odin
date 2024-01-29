@@ -3,6 +3,7 @@ import handleActiveLink from "../handleActiveLink";
 let editMode = false;
 let taskToEdit = null;
 
+import { saveTasksToLocalStorage } from "./createTask";
 export default function taskDialogHandler(
   newEditMode = false,
   newTaskToEdit = null
@@ -49,6 +50,7 @@ export default function taskDialogHandler(
         taskToEdit.priority = priority;
         taskToEdit.project = project;
         handleActiveLink();
+        saveTasksToLocalStorage();
       } else {
         createTask(title, description, dueDate, time, priority, project);
       }
