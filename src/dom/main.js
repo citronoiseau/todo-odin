@@ -1,3 +1,4 @@
+import burgerMenu from "../icons/burgerMenu.svg";
 export default function createMain() {
   const content = document.querySelector("#content");
 
@@ -5,16 +6,33 @@ export default function createMain() {
   main.id = "main";
   content.appendChild(main);
 
+  const overlay = document.createElement("div");
+  overlay.id = "overlay";
+  content.appendChild(overlay);
+
   const display = document.createElement("div");
   display.classList.add("display");
   main.appendChild(display);
 
   const text = document.createElement("div");
+  text.classList.add("infoContainer");
   display.appendChild(text);
+
+  const titleContainer = document.createElement("div");
+  titleContainer.classList.add("titleContainer");
+  text.appendChild(titleContainer);
+
+  const iconContainer = document.createElement("button");
+  iconContainer.classList.add("burgerMenu");
+  titleContainer.appendChild(iconContainer);
+
+  const icon = document.createElement("img");
+  icon.src = burgerMenu;
+  iconContainer.appendChild(icon);
 
   const title = document.createElement("h2");
   title.textContent = "Inbox";
-  text.appendChild(title);
+  titleContainer.appendChild(title);
 
   const description = document.createElement("div");
   description.classList.add("projectMainDescription");
@@ -25,6 +43,7 @@ export default function createMain() {
   display.appendChild(taskList);
 
   const buttonContainer = document.createElement("div");
+  buttonContainer.classList.add("btnContainer");
   display.appendChild(buttonContainer);
 
   const addTaskBtn = document.createElement("button");

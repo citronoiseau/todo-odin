@@ -16,7 +16,7 @@ body {
 }
 #sidebar {
   grid-area: sidebar;
-  padding: 30px;
+  padding: 30px 20px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -25,6 +25,16 @@ body {
   grid-area: main;
   display: flex;
   flex-direction: column;
+}
+
+#overlay {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 h1,
 h2,
@@ -38,11 +48,25 @@ h2 {
   background-color: #f2f6fc;
   border-radius: 15px;
   margin: 30px 20px;
-  padding: 30px;
+  padding: 30px 0;
   flex: 1;
   display: flex;
   flex-direction: column;
   gap: 20px;
+}
+
+.titleContainer {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+.burgerMenu {
+  visibility: hidden;
+  pointer-events: none;
+}
+.projectMainDescription,
+.display .btnContainer {
+  padding-left: 30px;
 }
 li,
 li > div {
@@ -50,9 +74,18 @@ li > div {
   align-items: center;
   gap: 8px;
 }
+li {
+  padding: 5px;
+  border-radius: 7px;
+  transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+li:hover {
+  transform: translateY(-2px);
+  background-color: #dce6f5;
+}
 li.active,
-div.active {
-  color: red;
+li:has(.projectLink.active) {
+  background-color: #d4e0f0;
 }
 
 .dialog {
@@ -80,6 +113,7 @@ div.active {
   display: flex;
   flex-direction: column;
   gap: 20px;
+  padding: 0 30px;
 }
 
 .taskContainer {
@@ -137,8 +171,28 @@ div.active {
   flex-direction: column;
   gap: 10px;
 }
-@media (max-width: 767px) {
+@media (max-width: 1024px) {
+  #content {
+    grid-template-areas: "main main";
+  }
+  .infoContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
   #sidebar {
-    padding: 10px;
+    transform: translateX(-100%);
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    z-index: 1;
+    background-color: #eaf1fb;
+    border-radius: 0 7px 7px 0;
+  }
+  .burgerMenu {
+    visibility: visible;
+    pointer-events: all;
   }
 }

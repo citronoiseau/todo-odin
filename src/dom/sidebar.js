@@ -13,10 +13,14 @@ export default function createSideBar() {
   logo.textContent = "D O I T";
   sideBarContainer.appendChild(logo);
 
+  const taskBtnContainer = document.createElement("div");
+  taskBtnContainer.classList.add("btnContainer");
+  sideBarContainer.appendChild(taskBtnContainer);
+
   const addTaskBtn = document.createElement("button");
   addTaskBtn.classList.add("addTaskBtn");
   addTaskBtn.textContent = "Add task";
-  sideBarContainer.appendChild(addTaskBtn);
+  taskBtnContainer.appendChild(addTaskBtn);
 
   const navbar = document.createElement("ul");
   navbar.classList.add("navbar");
@@ -39,10 +43,14 @@ export default function createSideBar() {
   projectList.classList.add("projectList");
   projectsContainer.appendChild(projectList);
 
+  const projectBtnContainer = document.createElement("div");
+  projectBtnContainer.classList.add("btnContainer");
+  projectsContainer.appendChild(projectBtnContainer);
+
   const addProjectBtn = document.createElement("button");
   addProjectBtn.textContent = "Add project";
   addProjectBtn.classList.add("addProjectBtn");
-  projectsContainer.appendChild(addProjectBtn);
+  projectBtnContainer.appendChild(addProjectBtn);
 
   const footerContainer = document.createElement("div");
   const message = document.createElement("div");

@@ -14,7 +14,6 @@ export default function changeTasks(name, tasks) {
   const matchingProject = projects.find((project) => project.title === name);
 
   if (matchingProject) {
-    console.log(matchingProject);
     description.textContent = matchingProject.getDescription();
   }
   updateList();

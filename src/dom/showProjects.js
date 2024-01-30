@@ -14,8 +14,8 @@ export default function showProject() {
     projectList.appendChild(projectContainer);
 
     const textContainer = document.createElement("div");
-    textContainer.id = project.title;
-    textContainer.classList.add("projectLink");
+    projectContainer.id = project.title;
+    projectContainer.classList.add("projectLink");
 
     const iconContainer = document.createElement("span");
     const icon = document.createElement("img");
@@ -47,8 +47,14 @@ export default function showProject() {
     btnContainer.appendChild(editBtn);
     btnContainer.appendChild(deleteBtn);
 
-    editBtn.addEventListener("click", () => project.editProject());
+    editBtn.addEventListener("click", (event) => {
+      event.stopPropagation();
+      project.editProject();
+    });
 
-    deleteBtn.addEventListener("click", () => project.deleteProject());
+    deleteBtn.addEventListener("click", (event) => {
+      event.stopPropagation();
+      project.deleteProject();
+    });
   });
 }

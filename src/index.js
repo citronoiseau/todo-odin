@@ -22,7 +22,7 @@ createTaskBtns.forEach((createTaskBtn) => {
   });
 });
 
-createProjectBtn.addEventListener("click", () => {
+createProjectBtn.addEventListener("click", (event) => {
   projectDialogHandler();
 });
 
