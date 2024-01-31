@@ -30,7 +30,7 @@ class Task {
 
   deleteTask() {
     const confirmed = window.confirm(
-      "Are you sure you want to remove this task?"
+      "Are you sure you want to delete this task?"
     );
     if (confirmed) {
       const position = tasks.indexOf(this);
@@ -80,7 +80,8 @@ function createDefaultTasks() {
       "",
       "",
       "Low",
-      "Home"
+      "Home",
+      "false"
     );
 
     const secondDefaultTask = new Task(
@@ -89,7 +90,8 @@ function createDefaultTasks() {
       "2024-02-04",
       "",
       "High",
-      "Programming"
+      "Programming",
+      "false"
     );
 
     const thirdDefaultTask = new Task(
@@ -98,8 +100,10 @@ function createDefaultTasks() {
       "2024-02-05",
       "14:00",
       "Medium",
-      "none"
+      "none",
+      "false"
     );
+
     tasks.push(defaultTask, secondDefaultTask, thirdDefaultTask);
     saveTasksToLocalStorage();
   }

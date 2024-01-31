@@ -19,7 +19,7 @@ class Project {
   }
   deleteProject() {
     const confirmed = window.confirm(
-      "Are you sure you want to remove this project? (All your task will be deleted to!)"
+      "Are you sure you want to remove this project? (All your task will be deleted too!)"
     );
     if (confirmed) {
       const position = projects.indexOf(this);

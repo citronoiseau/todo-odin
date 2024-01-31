@@ -98,6 +98,10 @@ li.active,
 li:has(.projectLink.active) {
   background-color: #d4e0f0;
 }
+#sidebar .btnContainer {
+  display: flex;
+  justify-content: center;
+}
 button,
 input[type="submit"] {
   cursor: pointer;
@@ -194,26 +198,32 @@ select:focus {
   transform: rotate(65deg);
 }
 #confirmBtn,
-#projectConfirmBtn {
+#projectConfirmBtn,
+.addTaskBtn,
+.addProjectBtn {
   margin-top: 10px;
   border: none;
   border-radius: 15px;
-  background-color: #133368;
+  background-color: #2c5496;
   color: #eaf1fb;
   padding: 15px 68px;
   transition: all 0.2s ease-in;
-  font-size: 0.8rem;
+  font-size: 0.7rem;
   text-transform: uppercase;
   letter-spacing: 2.5px;
 }
 #confirmBtn:hover,
-#projectConfirmBtn:hover {
-  background-color: #2556a5;
+#projectConfirmBtn:hover,
+.addTaskBtn:hover,
+.addProjectBtn:hover {
+  background-color: #386fc9;
   transform: translateY(-2px);
 }
 #confirmBtn:active,
-#projectConfirmBtn:active {
-  background-color: #2556a595;
+#projectConfirmBtn:active,
+.addTaskBtn:active,
+.addProjectBtn:active {
+  background-color: #3870c97b;
 }
 .taskList {
   display: flex;
@@ -327,5 +337,9 @@ select:focus {
   .burgerMenu {
     display: block;
     pointer-events: all;
+  }
+  #main .btnContainer {
+    display: flex;
+    justify-content: center;
   }
 }
