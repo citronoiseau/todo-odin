@@ -6,15 +6,8 @@ import handleActiveLink from "./handleActiveLink";
 
 pageLoader();
 
-const inbox = document.querySelector("#inbox");
-const today = document.querySelector("#today");
-const upcoming = document.querySelector("#upcoming");
 const createTaskBtns = document.querySelectorAll(".addTaskBtn");
-
 const createProjectBtn = document.querySelector(".addProjectBtn");
-const projectList = document.querySelector(".projectList");
-const projectLinks = document.querySelectorAll(".projectLink");
-let allLinks = [inbox, today, upcoming, ...projectLinks];
 
 createTaskBtns.forEach((createTaskBtn) => {
   createTaskBtn.addEventListener("click", () => {
@@ -22,15 +15,18 @@ createTaskBtns.forEach((createTaskBtn) => {
   });
 });
 
-createProjectBtn.addEventListener("click", (event) => {
+createProjectBtn.addEventListener("click", () => {
   projectDialogHandler();
 });
 
+const navbar = document.querySelector(".navbar");
+const links = document.querySelectorAll(".link");
+const projectList = document.querySelector(".projectList");
+const projectLinks = document.querySelectorAll(".projectLink");
+let allLinks = [...links, ...projectLinks];
 export function updateAllLinks() {
   allLinks = [
-    inbox,
-    today,
-    upcoming,
+    ...navbar.querySelectorAll(".navbar"),
     ...projectList.querySelectorAll(".projectLink"),
   ];
 

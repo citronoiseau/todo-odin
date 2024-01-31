@@ -1,3 +1,5 @@
+import cancelIcon from "../icons/cancel.svg";
+
 export default function createProjectDialog() {
   const sidebar = document.querySelector("#sidebar");
 
@@ -5,6 +7,10 @@ export default function createProjectDialog() {
   dialog.classList.add("projectDialog");
   dialog.classList.add("dialog");
   sidebar.appendChild(dialog);
+
+  const dialogName = document.createElement("h5");
+  dialogName.textContent = "Add your project";
+  dialog.appendChild(dialogName);
 
   const projectForm = document.createElement("form");
   dialog.appendChild(projectForm);
@@ -22,6 +28,7 @@ export default function createProjectDialog() {
   );
   projectNameInput.maxLength = 30;
   projectNameInput.required = true;
+  projectNameInput.placeholder = "Work";
 
   const projectDescriptionContainer = createFormElementContainer(projectForm);
   const projectDescriptionLabel = createLabel(
@@ -33,6 +40,7 @@ export default function createProjectDialog() {
   projectDescriptionText.id = "projectDescription";
   projectDescriptionText.classList.add("noResize");
   projectDescriptionText.maxLength = 200;
+  projectDescriptionText.placeholder = "Work: Passion in Action.";
   projectDescriptionContainer.appendChild(projectDescriptionText);
 
   const buttonContainer = document.createElement("div");
@@ -46,7 +54,9 @@ export default function createProjectDialog() {
   confirmBtn.value = "Confirm";
   const cancelBtn = document.createElement("button");
   cancelBtn.id = "projectCancelBtn";
-  cancelBtn.textContent = "Cancel";
+  const cancel = document.createElement("img");
+  cancel.src = cancelIcon;
+  cancelBtn.appendChild(cancel);
   buttonContainer.appendChild(cancelBtn);
 }
 
@@ -72,4 +82,12 @@ function createFormElementContainer(parent) {
   formElementContainer.classList.add("form-element");
   parent.appendChild(formElementContainer);
   return formElementContainer;
+}
+export function editDialog() {
+  const dialogName = document.querySelector("h5");
+  dialogName.textContent = "Edit your project";
+}
+export function returnDialog() {
+  const dialogName = document.querySelector("h5");
+  dialogName.textContent = "Add your project";
 }

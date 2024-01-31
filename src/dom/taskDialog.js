@@ -1,4 +1,5 @@
 import { projects } from "../projectHandler/createProject";
+import cancelIcon from "../icons/cancel.svg";
 
 export default function createTaskDialog() {
   const main = document.querySelector("#main");
@@ -8,6 +9,10 @@ export default function createTaskDialog() {
   dialog.classList.add("dialog");
   main.appendChild(dialog);
 
+  const dialogName = document.createElement("h4");
+  dialogName.textContent = "Add your task";
+  dialog.appendChild(dialogName);
+
   const taskForm = document.createElement("form");
   dialog.appendChild(taskForm);
 
@@ -16,6 +21,7 @@ export default function createTaskDialog() {
   const taskNameInput = createInput("text", "title", taskNameContainer);
   taskNameInput.maxLength = 30;
   taskNameInput.required = true;
+  taskNameInput.placeholder = "Dentist Appointment";
 
   const taskDescriptionContainer = createFormElementContainer(taskForm);
   const taskDescriptionLabel = createLabel(
@@ -27,17 +33,23 @@ export default function createTaskDialog() {
   taskDescriptionText.id = "description";
   taskDescriptionText.classList.add("noResize");
   taskDescriptionText.maxLength = 100;
+  taskDescriptionText.placeholder = "dentist's name, phone, adress...";
+
   taskDescriptionContainer.appendChild(taskDescriptionText);
 
-  const taskDateContainer = createFormElementContainer(taskForm);
+  const secondaryInfo = document.createElement("div");
+  secondaryInfo.classList.add("secondaryInfoDialog");
+  taskForm.appendChild(secondaryInfo);
+
+  const taskDateContainer = createFormElementContainer(secondaryInfo);
   const taskDateLabel = createLabel(
-    "Due date(optional):",
+    "Due date (optional):",
     "dueDate",
     taskDateContainer
   );
   const taskDateInput = createInput("date", "dueDate", taskDateContainer);
 
-  const taskTimeContainer = createFormElementContainer(taskForm);
+  const taskTimeContainer = createFormElementContainer(secondaryInfo);
   const taskTimeLabel = createLabel(
     "Time (optional):",
     "time",
@@ -46,7 +58,7 @@ export default function createTaskDialog() {
   const taskTimeInput = createInput("time", "time", taskTimeContainer);
   taskTimeInput.value = "none";
 
-  const priorityContainer = createFormElementContainer(taskForm);
+  const priorityContainer = createFormElementContainer(secondaryInfo);
   const priorityLabel = createLabel(
     "Priority:",
     "prioritySelector",
@@ -65,7 +77,7 @@ export default function createTaskDialog() {
     prioritySelector.appendChild(priorityVariant);
   });
 
-  const projectContainer = createFormElementContainer(taskForm);
+  const projectContainer = createFormElementContainer(secondaryInfo);
   const projectLabel = createLabel(
     "Project:",
     "projectSelector",
@@ -82,8 +94,10 @@ export default function createTaskDialog() {
   const confirmBtn = createInput("submit", "confirmBtn", buttonContainer);
   confirmBtn.value = "Confirm";
   const cancelBtn = document.createElement("button");
+  const cancel = document.createElement("img");
+  cancel.src = cancelIcon;
+  cancelBtn.appendChild(cancel);
   cancelBtn.id = "cancelBtn";
-  cancelBtn.textContent = "Cancel";
   buttonContainer.appendChild(cancelBtn);
 }
 
@@ -131,4 +145,12 @@ export function updateOptions() {
       projectSelector.appendChild(projectOption);
     });
   }
+}
+export function editDialog() {
+  const dialogName = document.querySelector("h4");
+  dialogName.textContent = "Edit your task";
+}
+export function returnDialog() {
+  const dialogName = document.querySelector("h4");
+  dialogName.textContent = "Add your task";
 }

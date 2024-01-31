@@ -4,6 +4,7 @@ import { updateOptions } from "../dom/taskDialog";
 import { updateAllLinks } from "..";
 import handleActiveLink from "../handleActiveLink";
 import { saveProjectsToLocalStorage } from "./createProject";
+import { editDialog, returnDialog } from "../dom/projectDialog";
 let editMode = false;
 let projectToEdit = null;
 
@@ -21,7 +22,11 @@ export default function projectDialogHandler(
 
   const titleInput = projectDialog.querySelector("#projectTitle");
   const descriptionInput = projectDialog.querySelector("#projectDescription");
-
+  if (editMode) {
+    editDialog();
+  } else {
+    returnDialog();
+  }
   projectDialog.showModal();
   projectDialog.classList.add("active");
 

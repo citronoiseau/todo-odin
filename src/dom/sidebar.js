@@ -1,6 +1,7 @@
 import inboxIcon from "../icons/inbox.svg";
 import todayIcon from "../icons/today.svg";
 import upcomingIcon from "../icons/calendar.svg";
+import completedIcon from "../icons/completed.svg";
 
 export default function createSideBar() {
   const content = document.querySelector("#content");
@@ -26,11 +27,23 @@ export default function createSideBar() {
   navbar.classList.add("navbar");
   sideBarContainer.appendChild(navbar);
 
-  const inboxLink = createLink("Inbox", navbar, "inbox", inboxIcon);
+  const inboxLink = createLink("Inbox", navbar, "inbox", "link", inboxIcon);
   inboxLink.classList.add("active");
-  const todayLink = createLink("Today", navbar, "today", todayIcon);
-  const upcomingLink = createLink("Upcoming", navbar, "upcoming", upcomingIcon);
-
+  const todayLink = createLink("Today", navbar, "today", "link", todayIcon);
+  const upcomingLink = createLink(
+    "Upcoming",
+    navbar,
+    "upcoming",
+    "link",
+    upcomingIcon
+  );
+  const completedLink = createLink(
+    "Completed",
+    navbar,
+    "completed",
+    "link",
+    completedIcon
+  );
   const projectsContainer = document.createElement("div");
   projectsContainer.classList.add("projects");
   sideBarContainer.appendChild(projectsContainer);
@@ -64,9 +77,10 @@ export default function createSideBar() {
   sideBarContainer.appendChild(footerContainer);
 }
 
-function createLink(text, parent, id, iconSvg) {
+function createLink(text, parent, id, linkClass, iconSvg) {
   const link = document.createElement("li");
   link.id = id;
+  link.classList.add(linkClass);
   const iconContainer = document.createElement("span");
   const icon = document.createElement("img");
   icon.src = iconSvg;

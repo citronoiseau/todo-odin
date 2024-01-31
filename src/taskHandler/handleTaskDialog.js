@@ -1,5 +1,6 @@
 import createTask from "./createTask";
 import handleActiveLink from "../handleActiveLink";
+import { editDialog, returnDialog } from "../dom/taskDialog";
 let editMode = false;
 let taskToEdit = null;
 
@@ -21,7 +22,11 @@ export default function taskDialogHandler(
   const timeInput = taskDialog.querySelector("#time");
   const prioritySelector = taskDialog.querySelector("#prioritySelector");
   const projectSelector = taskDialog.querySelector("#projectSelector");
-
+  if (editMode) {
+    editDialog();
+  } else {
+    returnDialog();
+  }
   taskDialog.showModal();
   taskDialog.classList.add("active");
 

@@ -9,7 +9,8 @@ export default function handleTaskDisplay(name) {
   }
 
   if (name === "inbox") {
-    showTasks(name, tasks);
+    let filteredTasks = tasks.filter((task) => !task.isCompleted);
+    showTasks(name, filteredTasks);
   }
   if (name === "today") {
     const todayTasks = tasks.filter((task) => {
@@ -32,9 +33,14 @@ export default function handleTaskDisplay(name) {
 
     showTasks(name, upcomingTasks);
   }
+  if (name === "completed") {
+    let filteredTasks = tasks.filter((task) => task.isCompleted);
+    showTasks(name, filteredTasks);
+  }
   if (isProject) {
     const projectTasks = tasks.filter((task) => task.project === name);
     showTasks(name, projectTasks);
   }
+
   isProject = false;
 }

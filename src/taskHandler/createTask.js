@@ -9,6 +9,7 @@ class Task {
     this.time = time;
     this.priority = priority;
     this.project = project;
+    this.isCompleted = false;
   }
 
   static fromObject(obj) {
@@ -18,7 +19,8 @@ class Task {
       obj.dueDate,
       obj.time,
       obj.priority,
-      obj.project
+      obj.project,
+      obj.isCompleted
     );
   }
 
@@ -36,6 +38,12 @@ class Task {
       handleActiveLink();
       saveTasksToLocalStorage();
     }
+  }
+
+  completeTask() {
+    this.isCompleted = !this.isCompleted;
+    handleActiveLink();
+    saveTasksToLocalStorage();
   }
 }
 

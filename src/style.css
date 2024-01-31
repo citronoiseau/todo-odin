@@ -10,7 +10,7 @@ body {
 }
 #content {
   display: grid;
-  grid-template-columns: minmax(100px, 20%) 1fr;
+  grid-template-columns: minmax(100px, 25%) 1fr;
   grid-template-areas: "sidebar main";
   height: 100vh;
 }
@@ -41,11 +41,21 @@ body {
 
 h1,
 h2,
-h3 {
+h3,
+h4,
+h5 {
   font-family: "Oswald", sans-serif;
 }
 h2 {
   text-transform: capitalize;
+}
+
+h4,
+h5 {
+  text-align: center;
+  font-size: 1.5rem;
+  color: #133368;
+  margin-bottom: 10px;
 }
 .display {
   background-color: #f2f6fc;
@@ -73,6 +83,7 @@ li > div {
   display: flex;
   align-items: center;
   gap: 8px;
+  cursor: pointer;
 }
 li {
   padding: 5px;
@@ -87,28 +98,123 @@ li.active,
 li:has(.projectLink.active) {
   background-color: #d4e0f0;
 }
-
+button,
+input[type="submit"] {
+  cursor: pointer;
+}
 .dialog {
-  position: fixed;
+  position: relative;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   opacity: 0;
   transition: opacity 0.5s ease-in-out;
   border: none;
-  padding: 20px;
+  padding: 30px;
   border-radius: 15px;
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
     rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+  width: 40%;
+  background-color: #eaf1fb;
 }
-.noResize {
-  resize: none;
-  overflow-y: auto;
+form {
+  display: flex;
+  margin-top: 10px;
+  flex-direction: column;
+  gap: 10px;
 }
+
+label {
+  color: #133368;
+  font-size: 1rem;
+}
+input[type="text"],
+input[type="date"],
+input[type="time"],
+textarea,
+select {
+  padding: 10px;
+  border-radius: 6px;
+  background-color: #c0d3f0;
+  border: none;
+  transition: all 0.2s ease;
+}
+input::placeholder,
+textarea::placeholder {
+  color: #133368;
+}
+input[type="text"]:focus,
+input[type="date"]:focus,
+input[type="time"]:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  background-color: rgb(183, 206, 246);
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+}
+
+.secondaryInfoDialog {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+.secondaryInfoDialog .form-element {
+  flex: 1 0 40%;
+  box-sizing: border-box;
+}
+
 .dialog.active {
   opacity: 1;
 }
+.form-element {
+  display: flex;
+  flex-direction: column;
+}
+#cancelBtn,
+#projectCancelBtn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: transparent;
+  border: none;
+  padding: 7px;
+  transition: all 0.2s ease-in;
+  border-radius: 0px 15px 0 15px;
+}
+#cancelBtn img,
+#projectCancelBtn img,
+.removeBtn img {
+  transition: transform 0.3s ease;
+}
 
+#cancelBtn:hover img,
+#projectCancelBtn:hover img,
+.removeBtn:hover img {
+  transform: rotate(65deg);
+}
+#confirmBtn,
+#projectConfirmBtn {
+  margin-top: 10px;
+  border: none;
+  border-radius: 15px;
+  background-color: #133368;
+  color: #eaf1fb;
+  padding: 15px 68px;
+  transition: all 0.2s ease-in;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+}
+#confirmBtn:hover,
+#projectConfirmBtn:hover {
+  background-color: #2556a5;
+  transform: translateY(-2px);
+}
+#confirmBtn:active,
+#projectConfirmBtn:active {
+  background-color: #2556a595;
+}
 .taskList {
   display: flex;
   flex-direction: column;
@@ -182,13 +288,21 @@ li:has(.projectLink.active) {
 }
 .editBtn:hover,
 .removeBtn:hover,
-.burgerMenu:hover {
+.burgerMenu:hover,
+#cancelBtn:hover,
+#projectCancelBtn:hover {
   background-color: #bfd1ee;
 }
 .editBtn:active,
 .removeBtn:active,
-.burgerMenu:active {
+.burgerMenu:active,
+#cancelBtn:active,
+#projectCancelBtn:active {
   background-color: #b5c8e68d;
+}
+.noResize {
+  resize: none;
+  overflow-y: auto;
 }
 @media (max-width: 1024px) {
   #content {

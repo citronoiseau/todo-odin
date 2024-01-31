@@ -19,6 +19,13 @@ export default function changeTasks(name, tasks) {
   updateList();
   const taskList = document.querySelector(".taskList");
 
+  if (tasks.length === 0) {
+    const noTasksMessage = document.createElement("div");
+    noTasksMessage.textContent = "You have no tasks here!";
+    taskList.appendChild(noTasksMessage);
+    return;
+  }
+
   tasks.forEach((task) => {
     const taskContainer = document.createElement("div");
     taskContainer.classList.add("taskContainer");
@@ -27,6 +34,7 @@ export default function changeTasks(name, tasks) {
     const checkbox = document.createElement("input");
     checkbox.type = "checkbox";
     taskContainer.appendChild(checkbox);
+    checkbox.checked = task.isCompleted;
 
     const mainInfo = document.createElement("div");
     mainInfo.classList.add("mainInfo");
@@ -38,6 +46,10 @@ export default function changeTasks(name, tasks) {
     const taskName = document.createElement("div");
     taskName.textContent = task.title;
     textInfo.appendChild(taskName);
+
+    if (task.isCompleted) {
+      textInfo.classList.add("taskChecked");
+    }
 
     if (task.description !== "none") {
       const taskDescription = document.createElement("p");
@@ -108,9 +120,11 @@ export default function changeTasks(name, tasks) {
 
     checkbox.addEventListener("change", function () {
       if (checkbox.checked) {
+        task.completeTask();
         textInfo.classList.add("taskChecked");
       } else {
         textInfo.classList.remove("taskChecked");
+        task.completeTask();
       }
     });
   });
