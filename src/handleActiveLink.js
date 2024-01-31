@@ -10,10 +10,17 @@ export default function handleActiveLink() {
   const activeLink = allLinks.find((link) => link.classList.contains("active"));
 
   if (!activeLink) {
-    handleTaskDisplay(savedLink);
     const savedLinkActive = document.querySelector(`#${savedLink}`);
-    savedLinkActive.classList.add("active");
-  } else {
+    if (savedLinkActive) {
+      savedLinkActive.classList.add("active");
+      handleTaskDisplay(savedLink);
+    } else {
+      const passLink = inbox.id;
+      inbox.classList.add("active");
+      handleTaskDisplay(passLink);
+    }
+  }
+  if (activeLink) {
     const passLink = activeLink.id;
     handleTaskDisplay(passLink);
     savedLink = passLink;

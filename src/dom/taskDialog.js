@@ -30,9 +30,12 @@ export default function createTaskDialog() {
   taskDescriptionContainer.appendChild(taskDescriptionText);
 
   const taskDateContainer = createFormElementContainer(taskForm);
-  const taskDateLabel = createLabel("Due date:", "dueDate", taskDateContainer);
+  const taskDateLabel = createLabel(
+    "Due date(optional):",
+    "dueDate",
+    taskDateContainer
+  );
   const taskDateInput = createInput("date", "dueDate", taskDateContainer);
-  taskDateInput.required = true;
 
   const taskTimeContainer = createFormElementContainer(taskForm);
   const taskTimeLabel = createLabel(

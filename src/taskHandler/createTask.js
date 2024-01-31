@@ -28,7 +28,7 @@ class Task {
 
   deleteTask() {
     const confirmed = window.confirm(
-      "Are you sure you want to remove this book?"
+      "Are you sure you want to remove this task?"
     );
     if (confirmed) {
       const position = tasks.indexOf(this);
@@ -39,8 +39,14 @@ class Task {
   }
 }
 
+export function deleteProjectTask(projectName) {
+  tasks = tasks.filter((task) => task.project !== projectName);
+  handleActiveLink();
+  saveTasksToLocalStorage();
+}
+
 const storedTasks = localStorage.getItem("tasks");
-export const tasks = storedTasks
+export let tasks = storedTasks
   ? JSON.parse(storedTasks).map(Task.fromObject)
   : [];
 
@@ -61,9 +67,9 @@ export default function createTask(
 function createDefaultTasks() {
   if (tasks.length === 0) {
     const defaultTask = new Task(
-      "Wash the dishes",
-      "5 spoons, 3 pans, 8 mugs",
-      "2024-01-30",
+      "Buy groceries",
+      "milk, sausages, eggs, apple juice, cereal, oatmeal cookies",
+      "",
       "",
       "Low",
       "Home"

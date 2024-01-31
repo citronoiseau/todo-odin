@@ -47,15 +47,19 @@ export default function changeTasks(name, tasks) {
 
     const dataContainer = document.createElement("div");
     mainInfo.appendChild(dataContainer);
-
     const taskDueDate = document.createElement("div");
-    const dueDate = new Date(task.dueDate);
-    const formattedDate = format(dueDate, "d MMM");
-    taskDueDate.textContent = formattedDate;
     dataContainer.appendChild(taskDueDate);
+    if (task.dueDate !== "") {
+      const dueDate = new Date(task.dueDate);
+      const formattedDate = format(dueDate, "d MMM");
+      taskDueDate.textContent = formattedDate;
 
-    if (task.time !== "") {
-      taskDueDate.textContent = `${formattedDate}, ${task.time}`;
+      if (task.time !== "") {
+        taskDueDate.textContent = `${formattedDate}, ${task.time}`;
+      }
+    }
+    if (task.dueDate === "" && task.time !== "") {
+      taskDueDate.textContent = `${task.time}`;
     }
 
     const secondaryInfo = document.createElement("div");

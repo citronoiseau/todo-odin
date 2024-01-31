@@ -27,7 +27,11 @@ export default function projectDialogHandler(
 
   if (editMode && projectToEdit) {
     titleInput.value = projectToEdit.title;
-    descriptionInput.value = projectToEdit.description;
+    if (projectToEdit.description) {
+      descriptionInput.value = projectToEdit.description;
+    } else {
+      descriptionInput.value = "";
+    }
   }
 
   confirmBtn.addEventListener("click", (event) => {

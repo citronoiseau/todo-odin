@@ -1,12 +1,10 @@
 let isSidebarOpen = false;
 let isMobile = false;
 
-function mobileHandler() {
-  const burgerMenu = document.querySelector(".burgerMenu");
+export default function setupMobileHandler() {
   const overlay = document.getElementById("overlay");
   const sidebar = document.querySelector("#sidebar");
-
-  burgerMenu.addEventListener("click", toggleSidebar);
+  const burgerMenu = document.querySelector(".burgerMenu");
 
   function toggleSidebar() {
     isSidebarOpen = !isSidebarOpen;
@@ -20,9 +18,10 @@ function mobileHandler() {
     }
   }
 
-  document.addEventListener("click", function (event) {
+  function handleDocumentClick(event) {
     const clickedElement = event.target;
     const isModalDialog = clickedElement.closest("dialog");
+
     if (
       !sidebar.contains(event.target) &&
       !burgerMenu.contains(event.target) &&
@@ -33,25 +32,26 @@ function mobileHandler() {
       overlay.style.display = "none";
       isSidebarOpen = false;
     }
-  });
+  }
 
-  window.addEventListener("resize", function () {
+  function handleResize() {
     const screenWidth = window.innerWidth;
-    if (screenWidth >= 1024) {
+    overlay.style.display = "none";
+
+    if (screenWidth > 1024) {
       sidebar.style.transform = "translateX(0)";
-      overlay.style.display = "none";
+      isSidebarOpen = false;
       isMobile = false;
     } else {
       sidebar.style.transform = "translateX(-100%)";
+      isSidebarOpen = false;
       isMobile = true;
     }
-  });
-}
-
-export default function setupMobileHandler() {
-  const screenWidth = window.innerWidth;
-  if (screenWidth < 1024) {
-    isMobile = true;
-    mobileHandler();
   }
+
+  handleResize();
+
+  burgerMenu.addEventListener("click", toggleSidebar);
+  document.addEventListener("click", handleDocumentClick);
+  window.addEventListener("resize", handleResize);
 }

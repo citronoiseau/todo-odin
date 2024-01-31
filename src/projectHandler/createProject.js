@@ -1,8 +1,9 @@
 import showProject from "../dom/showProjects";
 import projectDialogHandler from "./handleProjectDialog";
 import { updateOptions } from "../dom/taskDialog";
-import handleActiveLink from "../handleActiveLink";
 import { updateAllLinks } from "..";
+import handleActiveLink from "../handleActiveLink";
+import { deleteProjectTask } from "../taskHandler/createTask";
 
 class Project {
   constructor(title, description) {
@@ -18,14 +19,16 @@ class Project {
   }
   deleteProject() {
     const confirmed = window.confirm(
-      "Are you sure you want to remove this book?"
+      "Are you sure you want to remove this project? (All your task will be deleted to!)"
     );
     if (confirmed) {
       const position = projects.indexOf(this);
       projects.splice(position, 1);
+      deleteProjectTask(this.title);
       showProject();
       updateAllLinks();
       updateOptions();
+      handleActiveLink();
       saveProjectsToLocalStorage();
     }
   }
