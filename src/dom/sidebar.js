@@ -66,6 +66,7 @@ export default function createSideBar() {
   projectBtnContainer.appendChild(addProjectBtn);
 
   const footerContainer = document.createElement("div");
+  footerContainer.classList.add("footer");
   const message = document.createElement("div");
   message.textContent = "by ";
   const authorLink = document.createElement("a");

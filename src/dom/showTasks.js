@@ -111,11 +111,11 @@ export default function changeTasks(name, tasks) {
 
     const taskPriority = task.priority;
     if (taskPriority === "High") {
-      taskContainer.style.borderLeft = "5px solid  #F94876";
+      taskContainer.style.borderLeft = "30px solid  #F94876";
     } else if (taskPriority === "Medium") {
-      taskContainer.style.borderLeft = "5px solid #F6C058";
+      taskContainer.style.borderLeft = "30px solid #F6C058";
     } else if (taskPriority === "Low") {
-      taskContainer.style.borderLeft = "5px solid #42AC7F";
+      taskContainer.style.borderLeft = "30px solid #42AC7F";
     }
 
     checkbox.addEventListener("change", function () {
