@@ -1,4 +1,4 @@
-import "./styles.css";
+import "./style.css";
 import pageLoader from "./pageLoader";
 import taskDialogHandler from "./taskHandler/handleTaskDialog";
 import projectDialogHandler from "./projectHandler/handleProjectDialog";
