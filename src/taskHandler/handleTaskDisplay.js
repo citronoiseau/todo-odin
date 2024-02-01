@@ -4,16 +4,16 @@ import { format, isToday, addDays, isAfter, isBefore } from "date-fns";
 import showTasks from "../dom/showTasks";
 let isProject = false;
 export default function handleTaskDisplay(name) {
+  let filteredTasks = tasks.filter((task) => !task.isCompleted);
   if (projects.some((project) => project.title === name)) {
     isProject = true;
   }
 
   if (name === "inbox") {
-    let filteredTasks = tasks.filter((task) => !task.isCompleted);
     showTasks(name, filteredTasks);
   }
   if (name === "today") {
-    const todayTasks = tasks.filter((task) => {
+    const todayTasks = filteredTasks.filter((task) => {
       const dueDate = new Date(task.dueDate);
       return isToday(dueDate);
     });
@@ -21,7 +21,7 @@ export default function handleTaskDisplay(name) {
     showTasks(name, todayTasks);
   }
   if (name === "upcoming") {
-    const upcomingTasks = tasks.filter((task) => {
+    const upcomingTasks = filteredTasks.filter((task) => {
       const dueDate = new Date(task.dueDate);
       const oneWeekLater = addDays(new Date(), 7);
 
@@ -38,7 +38,7 @@ export default function handleTaskDisplay(name) {
     showTasks(name, filteredTasks);
   }
   if (isProject) {
-    const projectTasks = tasks.filter((task) => task.project === name);
+    const projectTasks = filteredTasks.filter((task) => task.project === name);
     showTasks(name, projectTasks);
   }
 
