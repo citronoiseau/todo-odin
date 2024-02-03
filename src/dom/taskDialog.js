@@ -120,7 +120,7 @@ function createInput(type, id, parent) {
 }
 function createFormElementContainer(parent) {
   const formElementContainer = document.createElement("div");
-  formElementContainer.classList.add("form-element");
+  formElementContainer.classList.add("formElement");
   parent.appendChild(formElementContainer);
   return formElementContainer;
 }
