@@ -54,7 +54,7 @@ export function deleteProjectTask(projectName) {
 }
 
 const storedTasks = localStorage.getItem("tasks");
-export let tasks = storedTasks
+export const tasks = storedTasks
   ? JSON.parse(storedTasks).map(Task.fromObject)
   : [];
 
