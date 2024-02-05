@@ -11,10 +11,10 @@ export default function setupMobileHandler() {
 
     if (isSidebarOpen) {
       sidebar.style.transform = "translateX(0)";
-      overlay.style.display = "block";
+      overlay.classList.add("shown");
     } else {
       sidebar.style.transform = "translateX(-100%)";
-      overlay.style.display = "none";
+      overlay.classList.remove("shown");
     }
   }
 
@@ -29,14 +29,14 @@ export default function setupMobileHandler() {
       isMobile
     ) {
       sidebar.style.transform = "translateX(-100%)";
-      overlay.style.display = "none";
+      overlay.classList.remove("shown");
       isSidebarOpen = false;
     }
   }
 
   function handleResize() {
     const screenWidth = window.innerWidth;
-    overlay.style.display = "none";
+    overlay.classList.remove("shown");
 
     if (screenWidth > 1024) {
       sidebar.style.transform = "translateX(0)";

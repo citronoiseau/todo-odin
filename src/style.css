@@ -30,15 +30,20 @@ body {
 }
 
 #overlay {
-  display: none;
+  opacity: 0;
+  pointer-events: none;
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
+  transition: opacity 0.3s ease-in-out;
 }
-
+#overlay.shown {
+  opacity: 1;
+  pointer-events: all;
+}
 h1,
 h2,
 h3,
@@ -350,6 +355,7 @@ input[type="checkbox"]:checked {
   }
   #sidebar {
     transform: translateX(-100%);
+    transition: transform 0.3s ease-in-out;
     position: fixed;
     top: 0;
     left: 0;
