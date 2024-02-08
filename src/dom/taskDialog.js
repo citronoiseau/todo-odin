@@ -89,6 +89,7 @@ export default function createTaskDialog() {
   updateOptions();
 
   const buttonContainer = document.createElement("div");
+  buttonContainer.classList.add("buttonContainer");
   taskForm.appendChild(buttonContainer);
 
   const confirmBtn = createInput("submit", "confirmBtn", buttonContainer);

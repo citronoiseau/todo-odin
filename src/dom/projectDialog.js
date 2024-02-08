@@ -44,6 +44,7 @@ export default function createProjectDialog() {
   projectDescriptionContainer.appendChild(projectDescriptionText);
 
   const buttonContainer = document.createElement("div");
+  buttonContainer.classList.add("buttonContainer");
   projectForm.appendChild(buttonContainer);
 
   const confirmBtn = createInput(

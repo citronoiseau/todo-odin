@@ -378,4 +378,14 @@ input[type="checkbox"]:checked {
   .secondaryInfoDialog {
     flex-direction: column;
   }
+  #confirmBtn,
+  #projectConfirmBtn,
+  .addTaskBtn,
+  .addProjectBtn {
+    padding: 15px 26px;
+  }
+  .buttonContainer {
+    display: flex;
+    justify-content: center;
+  }
 }
