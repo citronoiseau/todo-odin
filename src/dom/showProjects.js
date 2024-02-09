@@ -30,7 +30,6 @@ export default function showProject() {
     projectContainer.appendChild(textContainer);
 
     const btnContainer = document.createElement("span");
-    btnContainer.classList.add("buttonContainer");
     projectContainer.appendChild(btnContainer);
 
     const editBtn = document.createElement("button");
